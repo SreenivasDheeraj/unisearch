@@ -38,7 +38,7 @@ def university_eval():
         undergrad_gpa = request.form.get("gpa")
 
 
-        if int(gre_verbal) > 155 and int(gre_quant) > 165 and float(ielts_score) > 8 and float(undergrad_gpa) > 9:
+        if int(gre_verbal) > 155 and int(gre_quant) > 155 and float(ielts_score) > 8 and float(undergrad_gpa) > 9:
             results = recommendation_svd.model(gre_verbal, gre_quant, ielts_score, undergrad_gpa)
             return render_template("Reco_page.html", result = results)
     return render_template("Profile_Eval.html")
