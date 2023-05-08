@@ -37,9 +37,32 @@
     <div class="section-2 wf-section"><img
             src="https://uploads-ssl.webflow.com/643816822c0e666b8b8935a6/643d898db53b6d4b8922bd5f_logo.png"
             loading="lazy" alt="" /></div>
-    <form action="/university" class="search w-form" method="POST"><input type="text" class="search-input w-input" maxlength="256"
-            name="university" placeholder="Enter University Name" id="university" required="" /><input type="submit" value="GO"
-            class="search-button w-button" /></form>
+    <form action="/university" class="search w-form" method="POST"><select class="search-input w-input" maxlength="256"
+            name="university" placeholder="Enter University Name" id="university" required="" >
+            <option value="">Select University</option>
+            <option value="University of California Berkeley">University of California Berkeley</option>
+            <option value="University of California Los Angeles">University of California Los Angeles</option>
+            <option value="University of California San Diego">University of California San Diego</option>
+            <option value="Massachusetts Institute of Technology">Massachusetts Institute of Technology</option>
+            <option value="Stanford University">Stanford University</option>
+            <option value="Carnegie Mellon University">Carnegie Mellon University</option> 
+            <option value="University of Illinois Urbana Champaign">University of Illinois Urbana Champaign</option>
+            <option value="University of Texas Austin">University of Texas Austin</option>
+            <option value="Georgia Institute of Technology">Georgia Institute of Technology</option>
+            <option value="University of Michigan">University of Michigan Ann Arbor</option>
+            <option value="University of Pennsylvania">University of Pennsylvania</option>
+            <option value="Harvard University">Harvard University</option>
+            <option value="Princeton University">Princeton University</option>
+            <option value="Yale University">Yale University</option>
+            <option value="Cornell University">Cornell University</option>
+            <option value ="University of Washington">University of Washington</option>
+            <option value="New York University">New York University</option>
+            <option value="Columbia University">Columbia University</option>
+            <option value="California Institute of Technology">California Institute of Technology</option>
+            <option value="University of Southern California">University of Southern California</option>
+        </select>
+            <input type="submit" value="GO"
+            class="search-button w-button" onlick="error_check();"/></form>
     <div class="section-3 wf-section"><img
             src="https://uploads-ssl.webflow.com/643816822c0e666b8b8935a6/643d91f2e3c668e2d93dacc0_or.png"
             loading="lazy" alt="" /></div>
@@ -49,6 +72,14 @@
         crossorigin="anonymous"></script>
     <script src="{{ url_for('static',filename='js/Home.js') }}"
         type="text/javascript"></script>
+        <script>
+            function error_check()
+            {
+                var x = document.getElementById("university").value;
+                //Read uni_name from univ.csv file 
+                
+            }
+        </script>
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
 

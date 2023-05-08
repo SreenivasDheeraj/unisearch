@@ -38,7 +38,7 @@ def university_eval():
         undergrad_gpa = request.form.get("gpa")
 
 
-        if int(gre_verbal) > 155 and int(gre_quant) > 155 and float(ielts_score) > 8 and float(undergrad_gpa) > 9:
+        if int(gre_verbal) >= 155 and int(gre_quant) >= 155 and float(ielts_score) >= 7.5 and float(undergrad_gpa) > 9:
             results = recommendation_svd.model(gre_verbal, gre_quant, ielts_score, undergrad_gpa)
             return render_template("Reco_page.html", result = results)
     return render_template("Profile_Eval.html")
@@ -54,12 +54,13 @@ def gfg():
         rank = data[data["UNI_NAME"]==uni]["QS_Ranking"]
         link = data[data["UNI_NAME"]==uni]["Link"]
         loc = data[data["UNI_NAME"]==uni]["Location"]
+        overall_ranking = data[data["UNI_NAME"]==uni]["Overall_Ranking"]
         img = os.path.join("static/img", str(int(rank.values[0]))+".png")
         positive_review = classified[classified["UNI_NAME"]==uni][classified["Sentiment"]=="Positive"][classified['Type']=='Comment']
         negative_review = classified[classified["UNI_NAME"]==uni][classified["Sentiment"]=="Negative"][classified['Type']=='Comment']
         neutral_review = classified[classified["UNI_NAME"]==uni][classified["Sentiment"]=="Neutral"][classified['Type']=='Comment']
         # print(positive_review.values[2])
-        result = [int(rank.values[0]), str(link.values[0]), str(loc.values[0]),  str(univ_name.values[0]), img, positive_review.values, int(len(positive_review)), negative_review.values ,int(len(negative_review)), neutral_review.values, int(len(neutral_review))]
+        result = [int(rank.values[0]), str(link.values[0]), str(loc.values[0]),  str(univ_name.values[0]), img, positive_review.values, int(len(positive_review)), negative_review.values ,int(len(negative_review)), neutral_review.values, int(len(neutral_review)), int(overall_ranking.values[0])]
         # print(result)
         return render_template("College_deets.html", result = result)
     return render_template("College_deets.html")
@@ -72,12 +73,13 @@ def gfg1(uni_name):
     rank = data[data["UNI_NAME"]==uni]["QS_Ranking"]
     link = data[data["UNI_NAME"]==uni]["Link"]
     loc = data[data["UNI_NAME"]==uni]["Location"]
+    overall_ranking = data[data["UNI_NAME"]==uni]["Overall_Ranking"]
     img = os.path.join("/static/img", str(int(rank.values[0]))+".png")
     positive_review = classified[classified["UNI_NAME"]==uni][classified["Sentiment"]=="Positive"][classified['Type']=='Comment']
     negative_review = classified[classified["UNI_NAME"]==uni][classified["Sentiment"]=="Negative"][classified['Type']=='Comment']
     neutral_review = classified[classified["UNI_NAME"]==uni][classified["Sentiment"]=="Neutral"][classified['Type']=='Comment']
 
-    result = [int(rank.values[0]), str(link.values[0]), str(loc.values[0]),  str(univ_name.values[0]), img, positive_review.values, int(len(positive_review)), negative_review.values ,int(len(negative_review)), neutral_review.values, int(len(neutral_review))]
+    result = [int(rank.values[0]), str(link.values[0]), str(loc.values[0]),  str(univ_name.values[0]), img, positive_review.values, int(len(positive_review)), negative_review.values ,int(len(negative_review)), neutral_review.values, int(len(neutral_review)), int(overall_ranking.values[0])]
 
     return render_template("College_deets.html", result = result)
     

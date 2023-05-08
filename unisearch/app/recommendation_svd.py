@@ -27,7 +27,7 @@ def model(gre_verbal, gre_quant, ielts_score, undergrad_gpa):
 
     # Normalize the data
     scaler = MinMaxScaler()
-    scaled_data = scaler.fit_transform(data.iloc[:, 4:])
+    scaled_data = scaler.fit_transform(data.iloc[:, 4:8])
 
     # Apply SVD to the scaled data
     svd = TruncatedSVD(n_components=2, random_state=42)
